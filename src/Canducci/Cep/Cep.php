@@ -44,7 +44,7 @@ class Cep {
     {
 
         $url = $this->URL[$type];
-        
+
         $url = str_replace('[cep]', $this->cep, $url);
 
         try 
