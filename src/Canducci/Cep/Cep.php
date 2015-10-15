@@ -4,9 +4,11 @@ use \Exception;
 
 class Cep {
 
+
     private $cep;
 
     private $URL =  'http://viacep.com.br/ws/[cep]/[type]/';
+
 
     public function __construct()
     {
@@ -27,7 +29,7 @@ class Cep {
 
         }
 
-        throw new Exception("Invalid Zip");
+        throw new Exception("Invalid Zip ...");
     }
 
     private function toReturn($type = '')
