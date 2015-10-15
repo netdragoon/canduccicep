@@ -1,5 +1,4 @@
-<?php 
-namespace Canducci\Cep\Facade;
+<?php namespace Canducci\Cep\Facade;
 
 use Illuminate\Support\Facades\Facade;
 

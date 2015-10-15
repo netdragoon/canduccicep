@@ -6,17 +6,7 @@ class Cep {
 
     private $cep;
 
-    private $URL =  [
-
-        'json'   => 'http://viacep.com.br/ws/[cep]/json/',
-
-        'xml'    => 'http://viacep.com.br/ws/[cep]/xml/',
-
-        'piped'  => 'http://viacep.com.br/ws/[cep]/piped/',
-
-        'querty' => 'http://viacep.com.br/ws/[cep]/querty/'
-
-    ];
+    private $URL =  'http://viacep.com.br/ws/[cep]/[type]/';
 
     public function __construct()
     {
@@ -41,16 +31,15 @@ class Cep {
     }
 
     private function toReturn($type = '')
-    {
+    {       
 
-        $url = $this->URL[$type];
-
-        $url = str_replace('[cep]', $this->cep, $url);
-
+        $url = str_replace(array('[cep]', '[type]'), 
+                           array($this->cep, $type), 
+                           $this->URL);
         try 
         {
 
-            $get = file_get_contents($url); 
+            $get = LoadData::get($url); 
 
         } 
         catch (Exception $e) 
