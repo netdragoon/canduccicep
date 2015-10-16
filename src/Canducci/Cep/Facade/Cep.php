@@ -12,5 +12,4 @@ class Cep extends Facade {
 		
 	}		
 
-
 }

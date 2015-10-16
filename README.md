@@ -134,12 +134,23 @@ $cep->toQuerty();
 __To check if any errors had to do:__
 
 ```PHP
-$cep   = Cep::find('01414001');			
-$dados = $cep->toQuerty();
+$cep = Cep::find('01414000');
 
-if ($dados) {
-	//ZIP EXISTING
-} else {
-	//POSTAL CODE NO EXISTING 
+$dados = $cep->toSimpleXml();
+
+
+if ($dados->passed())
+{
+
+    return $dados->result();
+
 }
+else
+{
+
+    return 'Cep não encontrado';
+
+}
+
+
 ```

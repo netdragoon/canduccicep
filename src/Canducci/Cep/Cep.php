@@ -47,48 +47,70 @@ class Cep {
 
     public function toJson()
     {
-
-        return $this->toReturn('json');
+        
+        $data = $this->toReturn('json');
+        
+        if (!$data[1]) return $this->renderCepInfoNull();
+        
+        return $this->renderCepInfo($data[0], false, $this->getCep());
 
     }
 
     public function toArray()
     {
 
-        return json_decode($this->toReturn('json'), true);
+        return $this->toArrayOrObject(true);                
 
     }
 
     public function toObject()
     {        
-        return json_decode($this->toReturn('json'), false);
+
+        return $this->toArrayOrObject(false);                
+
     }
 
     public function toXml()
     {
 
-        return $this->toReturn('xml');
+        $data = $this->toReturn('xml');
+        
+        if (!$data[1]) return $this->renderCepInfoNull();
+
+        return $this->renderCepInfo($data[0], false, $this->getCep());
 
     }
 
     public function toSimpleXml()
     {
 
-        return simplexml_load_string($this->toReturn('xml'));
+        $data = $this->toReturn('xml');
+        
+        if (!$data[1]) return $this->renderCepInfoNull();
+
+        return $this->renderCepInfo(simplexml_load_string($data[0]), false, $this->getCep());
 
     }
 
     public function toPiped()
     {
 
-        return $this->toReturn('piped');
+        $data = $this->toReturn('piped');
+        
+        if (!$data[1]) return $this->renderCepInfoNull();
+
+        return $this->renderCepInfo($data[0], false, $this->getCep());        
 
     }
 
     public function toQuerty()
     {
 
-        return $this->toReturn('querty');
+        $data = $this->toReturn('querty');
+        
+        if (!$data[1]) return $this->renderCepInfoNull();
+        
+        return $this->renderCepInfo($data[0], false, $this->getCep());                
 
     }
 
@@ -106,7 +128,7 @@ class Cep {
     private function validation($get)
     {
 
-        return (!((int)preg_match('/(erro)/', $get) === 1));
+        return !((int)preg_match('/(erro)/', $get) === 1);
 
     }
 
@@ -128,13 +150,8 @@ class Cep {
         {
             
             $get = $this->loadData->get($url); 
-
-            if (!$this->validation($get))
-            {
-
-                return array('Erro'=> 'Cep não encontrado');
-                
-            }
+            
+            return array($get, $this->validation($get));
 
         } 
         catch (Exception $ex) 
@@ -147,5 +164,29 @@ class Cep {
         return $get;
 
     }
-    
+
+    private function renderCepInfo($result, $status, $cep)
+    {
+
+        return new CepInfo($result, $status, $cep);
+        
+    }
+
+    private function renderCepInfoNull()
+    {
+
+        return $this->renderCepInfo(null, true, $this->getCep());
+
+    }
+
+    private function toArrayOrObject($st = true)
+    {
+
+        $data = $this->toReturn('json');
+        
+        if (!$data[1]) return $this->renderCepInfoNull();
+
+        return $this->renderCepInfo(json_decode($data[0], $st), false, $this->getCep());
+
+    }
 }
