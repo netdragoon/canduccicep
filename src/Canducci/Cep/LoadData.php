@@ -3,11 +3,18 @@
 class LoadData {
 
 
+    /**
+     * Construct LoadData
+     */
     public function __construct()
     {
 
     }
 
+    /**
+     * @param $url
+     * @return mixed
+     */
     public function get($url)
     {    	
 

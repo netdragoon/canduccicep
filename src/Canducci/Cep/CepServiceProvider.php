@@ -7,6 +7,9 @@ class CepServiceProvider extends ServiceProvider {
 	
     protected $state = false;
 
+    /**
+     * register class LoadData and Cep
+     */
     public function register()
     {
 

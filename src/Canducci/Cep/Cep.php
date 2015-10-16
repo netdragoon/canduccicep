@@ -11,6 +11,9 @@ class Cep {
 
     private $loadData = null;
 
+    /**
+     * @param LoadData $loadData
+     */
     public function __construct(LoadData $loadData)
     {
 
@@ -19,7 +22,12 @@ class Cep {
         $this->loadData = $loadData;
 
     }
-    
+
+    /**
+     * @param $cep
+     * @return $this
+     * @throws Exception
+     */
     public function find($cep)
     {
 
@@ -29,8 +37,12 @@ class Cep {
 
         return $this;
         
-    }   
+    }
 
+    /**
+     * @param $cep
+     * @return Cep
+     */
     public function setCep($cep)
     {
 
@@ -38,6 +50,9 @@ class Cep {
 
     }
 
+    /**
+     * @return string
+     */
     public function getCep()
     {
 
@@ -45,6 +60,10 @@ class Cep {
 
     }
 
+    /**
+     * @return CepInfo
+     * @throws Exception
+     */
     public function toJson()
     {
         
@@ -56,6 +75,9 @@ class Cep {
 
     }
 
+    /**
+     * @return CepInfo
+     */
     public function toArray()
     {
 
@@ -63,6 +85,9 @@ class Cep {
 
     }
 
+    /**
+     * @return CepInfo
+     */
     public function toObject()
     {        
 
@@ -70,6 +95,10 @@ class Cep {
 
     }
 
+    /**
+     * @return CepInfo
+     * @throws Exception
+     */
     public function toXml()
     {
 
@@ -81,6 +110,10 @@ class Cep {
 
     }
 
+    /**
+     * @return CepInfo
+     * @throws Exception
+     */
     public function toSimpleXml()
     {
 
@@ -92,6 +125,10 @@ class Cep {
 
     }
 
+    /**
+     * @return CepInfo
+     * @throws Exception
+     */
     public function toPiped()
     {
 
@@ -103,6 +140,10 @@ class Cep {
 
     }
 
+    /**
+     * @return CepInfo
+     * @throws Exception
+     */
     public function toQuerty()
     {
 
@@ -114,6 +155,11 @@ class Cep {
 
     }
 
+    /**
+     * @param $cep
+     * @return bool
+     * @throws Exception
+     */
     public static function parse($cep)
     {
         
@@ -125,6 +171,10 @@ class Cep {
 
     }
 
+    /**
+     * @param $get
+     * @return bool
+     */
     private function validation($get)
     {
 
@@ -132,6 +182,10 @@ class Cep {
 
     }
 
+    /**
+     * @param $type
+     * @return mixed
+     */
     private function renderUrl($type)
     {
 
@@ -139,6 +193,11 @@ class Cep {
 
     }
 
+    /**
+     * @param $type
+     * @return array|mixed|null
+     * @throws Exception
+     */
     private function toReturn($type)
     {       
 
@@ -165,6 +224,12 @@ class Cep {
 
     }
 
+    /**
+     * @param $result
+     * @param $status
+     * @param $cep
+     * @return CepInfo
+     */
     private function renderCepInfo($result, $status, $cep)
     {
 
@@ -172,6 +237,9 @@ class Cep {
         
     }
 
+    /**
+     * @return CepInfo
+     */
     private function renderCepInfoNull()
     {
 
@@ -179,6 +247,11 @@ class Cep {
 
     }
 
+    /**
+     * @param bool $st
+     * @return CepInfo
+     * @throws Exception
+     */
     private function toArrayOrObject($st = true)
     {
 
