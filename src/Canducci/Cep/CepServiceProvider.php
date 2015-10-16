@@ -8,11 +8,14 @@ class CepServiceProvider extends ServiceProvider {
 
     public function register()
     {
+
         $this->app->bind('Cep', function($app) 
         {
 
             return new Cep;
 
         });
+
     }
+    
 }

@@ -142,6 +142,5 @@ class Cep {
         return $get;
 
     }
-
     
 }

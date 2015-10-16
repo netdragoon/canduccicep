@@ -24,4 +24,5 @@ final class LoadData {
         return $data;
 
     }
+    
 }
