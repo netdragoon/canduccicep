@@ -4,6 +4,14 @@ use Illuminate\Foundation\Testing;
 
 class CepTest extends TestCase {
 
+
+    public function setUp()
+    {
+
+        parent::setUp();
+
+    }
+
     /**
      * Creates the application.
      *
@@ -17,7 +25,8 @@ class CepTest extends TestCase {
 
         $testEnvironment = 'testing';
 
-        return require __DIR__.'D:\Sites\www\packages\laravel42\bootstrap\start.php';
+        //return require __DIR__.'/../../start.php';
+        return require '/../../../bootstrap/start.php';
     }
 
     /**
@@ -26,7 +35,7 @@ class CepTest extends TestCase {
     public function getCepInstance()
     {
 
-        return new \Canducci\Cep\Cep(new \Canducci\Cep\LoadData());
+        return new Canducci\Cep\Cep(new Canducci\Cep\LoadData());
 
     }
 
@@ -38,6 +47,24 @@ class CepTest extends TestCase {
         return $cep->find('01414000');
 
     }
+
+    public function testCepInfoReturnJson()
+    {
+        $cep = $this->getCepInstance();
+
+        $this->assertJson($cep->find('01414000')->toJson()->result());
+
+    }
+
+    public function testCepInfoReturnArray()
+    {
+
+        $cep = $this->getCepInstance();
+
+        $this->assertInternalType('array',$cep->find('01414000')->toArray()->result());
+
+    }
+
 }
 
 //D:\Sites\www\packages\laravel42\vendor\bin>phpunit ..\canducci\cep\tests\CepTest.php
