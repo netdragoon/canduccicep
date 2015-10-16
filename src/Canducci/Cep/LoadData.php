@@ -1,6 +1,6 @@
 <?php namespace Canducci\Cep;
 
-final class LoadData {
+class LoadData {
 
 	public static function get($url)
     {    	
