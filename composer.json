@@ -1,0 +1,25 @@
+{
+    "name": "canducci/cep",
+    "type": "library",
+    "description": "Laravel CEP (Zip Code)",
+    "keywords": ["Laravel","CEP"],
+    "homepage": "https://github.com/diasfulvio/cep",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Fúlvio Cezar Canducci Dias",
+            "email": "dias.fulvio@gmail.com",
+            "role": "Developer"
+        }
+    ],	
+    "require": {
+        "php": ">=5.3.0",
+		"ext-fileinfo": "*"
+    },
+    "autoload": {				
+		"psr-0": {
+			"Canducci\\Cep": "src/"
+		}
+    },	
+    "minimum-stability": "dev"
+}
