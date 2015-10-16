@@ -9,11 +9,14 @@ class Cep {
 
     private $URL =  'http://viacep.com.br/ws/[cep]/[type]/';
 
+    private $loadData = null;
 
-    public function __construct()
+    public function __construct(LoadData $loadData)
     {
 
         $this->cep = '';
+
+        $this->loadData = $loadData;
 
     }
     
@@ -124,11 +127,13 @@ class Cep {
         try 
         {
             
-            $get = LoadData::get($url); 
+            $get = $this->loadData->get($url); 
 
             if (!$this->validation($get))
             {
+
                 return array('Erro'=> 'Cep não encontrado');
+                
             }
 
         } 

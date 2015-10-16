@@ -2,6 +2,7 @@
 
 use Illuminate\Support\ServiceProvider;
 
+
 class CepServiceProvider extends ServiceProvider {
 	
     protected $state = false;
@@ -9,13 +10,20 @@ class CepServiceProvider extends ServiceProvider {
     public function register()
     {
 
+    	$this->app->singleton('LoadData', function($app)
+    	{
+
+    		return new LoadData();
+
+   		});
+
         $this->app->bind('Cep', function($app) 
         {
 
-            return new Cep;
+            return new Cep($app['LoadData']);
 
         });
 
     }
-    
+
 }
