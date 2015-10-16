@@ -20,93 +20,25 @@ class Cep {
     public function find($cep)
     {
 
-        if (mb_strlen($cep) === 8 || mb_strlen($cep) === 9) 
-        {
+        self::parse($cep);
 
-            $this->cep = $cep;
+        $this->cep = $cep;        
 
-            return $this;
+        return $this;
+        
+    }   
 
-        }
+    public function setCep($cep)
+    {
 
-        throw new Exception("Invalid Zip ...");
+        return $this->find($cep);
+
     }
 
-    private function toReturn($type = '')
-    {       
+    public function getCep()
+    {
 
-        $url = str_replace(array('[cep]', '[type]'), 
-                           array($this->cep, $type), 
-                           $this->URL);
-        try 
-        {
-
-            $get = LoadData::get($url); 
-
-        } 
-        catch (Exception $e) 
-        {
-
-            throw new Exception("Number and http are invalid");
-
-        }   
-
-        switch ($type) 
-        {
-            case 'json': 
-            {
-                $erro = json_decode($get);
-
-                if (isset($erro->erro) && $erro->erro === true) 
-                {
-
-                    return null;
-
-                }
-
-                break;
-            }
-            case 'xml': 
-            {
-                $erro = simplexml_load_string($get);
-
-                if (isset($erro) && isset($erro->erro) && $erro->erro == 'true') 
-                {
-
-                    return null;
-
-                }
-                break;
-            }
-            case 'piped': 
-            {
-                $erro = explode('|', $get);
-
-                if (isset($erro) && sizeof($erro) === 1) 
-                {
-                
-                    $erro = explode(':', $erro[0]);
-
-                    if (isset($erro) && isset($erro[0]) && isset($erro[1]) && $erro[0] == 'erro' && $erro[1] == true) 
-                    {
-
-                        return null;
-
-                    }
-                }
-
-                break;
-            }
-            case 'querty': 
-            {
-
-                if ($get === 'erro=true') return null;
-
-                break;
-            }
-        }
-
-        return $get;
+        return $this->cep;
 
     }
 
@@ -125,26 +57,8 @@ class Cep {
     }
 
     public function toObject()
-    {
-        $class = new \stdClass;
-
-        $array = $this->toArray();
-
-        if (!is_null($array)) 
-        {
-            
-            $class->cep        = $array['cep'];
-            $class->logradouro = $array['logradouro'];
-            $class->bairro     = $array['bairro'];
-            $class->localidade = $array['localidade'];
-            $class->uf         = $array['uf'];
-            $class->ibge       = $array['ibge'];
-            $class->gia        = $array['gia'];
-
-            return $class;
-        }               
-        return null;
-
+    {        
+        return json_decode($this->toReturn('json'), false);
     }
 
     public function toXml()
@@ -174,4 +88,60 @@ class Cep {
         return $this->toReturn('querty');
 
     }
+
+    public static function parse($cep)
+    {
+        
+        if (mb_strlen($cep) === 8 && preg_match('/^[0-9]{8}$/', $cep)) return true;
+
+        if (mb_strlen($cep) === 9 && preg_match('/^[0-9]{5}-[0-9]{3}$/', $cep)) return true;
+
+        throw new Exception("Cep com formato inválido. Exemplo: 01414-001 ou 01414001");
+
+    }
+
+    private function validation($get)
+    {
+
+        return (!((int)preg_match('/(erro)/', $get) === 1));
+
+    }
+
+    private function renderUrl($type)
+    {
+
+         return str_replace(array('[cep]', '[type]'), array($this->cep, $type), $this->URL);
+
+    }
+
+    private function toReturn($type)
+    {       
+
+        $get = null;
+
+        $url = $this->renderUrl($type);
+
+        try 
+        {
+            
+            $get = LoadData::get($url); 
+
+            if (!$this->validation($get))
+            {
+                return array('Erro'=> 'Cep não encontrado');
+            }
+
+        } 
+        catch (Exception $ex) 
+        {
+            
+            throw new Exception("Erro no servidor http");
+
+        }  
+
+        return $get;
+
+    }
+
+    
 }
