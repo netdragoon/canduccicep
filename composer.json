@@ -3,12 +3,12 @@
     "type": "library",
     "description": "Laravel CEP (Zip Code)",
     "keywords": ["Laravel","CEP"],
-    "homepage": "https://github.com/diasfulvio/cep",
+    "homepage": "https://github.com/netdragoon/canduccicep",
     "license": "MIT",
     "authors": [
         {
-            "name": "Fúlvio Cezar Canducci Dias",
-            "email": "dias.fulvio@gmail.com",
+            "name": "NetDragoon",
+            "email": "netdragoon@outlook.com",
             "role": "Developer"
         }
     ],	
