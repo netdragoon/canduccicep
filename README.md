@@ -2,7 +2,7 @@
 
 __Web Service provided by http://viacep.com.br/__
 
-[![Canducci Cep](https://onedrive.live.com/embed?cid=05E91440F9EC0B7A&resid=5E91440F9EC0B7A%21109&authkey=AJU5fJnK_mqVuug)](https://packagist.org/packages/canducci/cep)
+[![Canducci Cep](https://rbofmg-sn3302.files.1drv.com/y3p8AkJ61QPgaBciQr7eYXQXiRi_7vKvXeeS_iKg4LYLtV40qPSzTgl55vh1CklI1U_9afR401m-1tKo_teUQMxFXOuZP3ZW8gRjgVWzYQaLSxFdSyrznBiv0wH5i6sI9irnoOl6Nwgv1ZES9w927pS2Q/cep.png)](https://packagist.org/packages/canducci/cep)
 
 ## Quick start
 
