@@ -13,18 +13,14 @@ class CepServiceProvider extends ServiceProvider {
     public function register()
     {
 
-    	$this->app->singleton('LoadData', function($app)
+    	$this->app->singleton('LoadData', function()
     	{
-
     		return new LoadData();
-
    		});
 
         $this->app->bind('Cep', function($app) 
         {
-
             return new Cep($app['LoadData']);
-
         });
 
     }
