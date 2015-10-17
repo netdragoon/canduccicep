@@ -2,7 +2,7 @@
 
 __Web Service provided by http://viacep.com.br/__
 
-[![Canducci Cep](https://fulviocanducci.files.wordpress.com/2015/01/1948132_691123557596602_6995479600312612395_n.png)](https://packagist.org/packages/canducci/cep)
+[![Canducci Cep](https://onedrive.live.com/embed?cid=05E91440F9EC0B7A&resid=5E91440F9EC0B7A%21109&authkey=AJU5fJnK_mqVuug)](https://packagist.org/packages/canducci/cep)
 
 ## Quick start
 
@@ -50,7 +50,9 @@ $cep = Cep::find('01414-001');
 
 Type returns:
 ```PHP    
-$cep->toJon();
+$cepInfo = $cep->toJon();
+
+$cepInfo->result();
 
     {
         "cep": "01414-001",
@@ -63,8 +65,10 @@ $cep->toJon();
 ```
 
 ```PHP    
-$cep->toArray();
-    
+$cepInfo = $cep->toArray();
+
+$cepInfo->result();
+
     Array
     (
         [cep] => 01414-001
@@ -77,8 +81,9 @@ $cep->toArray();
 ```
 
 ```PHP    
-$cep->toObject();
+$cepInfo = $cep->toObject();
     
+$cepInfo->result();
     
     stdClass Object
     (
@@ -92,7 +97,9 @@ $cep->toObject();
 ```
 
 ```PHP    
-$cep->toXml();
+$cepInfo = $cep->toXml();
+
+$cepInfo->result();
     
     <?xml version="1.0" encoding="utf-8"?>
     <xmlcep>
@@ -106,7 +113,9 @@ $cep->toXml();
 ```
 
 ```PHP    
-$cep->toSimpleXml();
+$cepInfo = $cep->toSimpleXml();
+
+$cepInfo->result();
 
     SimpleXMLElement Object
     (
@@ -120,13 +129,17 @@ $cep->toSimpleXml();
 ```
 
 ```PHP    
-$cep->toPiped();
+$cepInfo = $cep->toPiped();
+    
+$cepInfo->result();
     
     cep:01414-001|logradouro:Rua Haddock Lobo|bairro:Cerqueira César|localidade:São Paulo|uf:SP|ibge:3550308
 ```
     
 ```PHP    
-$cep->toQuerty();
+$cepInfo = $cep->toQuerty();
+    
+$cepInfo->result();
     
     cep=01414-001&logradouro=Rua+Haddock+Lobo&bairro=Cerqueira+C%C3%A9sar&localidade=S%C3%A3o+Paulo&uf=SP&ibge=3550308
 ```   
@@ -134,12 +147,13 @@ $cep->toQuerty();
 __To check if any errors had to do:__
 
 ```PHP
+
 $cep = Cep::find('01414000');
 
-$dados = $cep->toSimpleXml();
+$cepInfo = $cep->toSimpleXml();
 
 
-if ($dados->passed())
+if ($cepInfo->passed())
 {
 
     return $dados->result();
