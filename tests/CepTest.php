@@ -39,12 +39,24 @@ class CepTest extends TestCase {
 
     }
 
-    public function testInstance()
+    public function testCepInstance()
     {
 
         $cep = $this->getCepInstance();
 
-        return $cep->find('01414000');
+        $this->assertInstanceOf('Canducci\Cep\Cep', $cep);
+
+    }
+
+    public function testCepInfoInstance()
+    {
+
+        $cep = $this->getCepInstance();
+
+        $cepInfo = $cep->find('01414000')->toJson();
+
+        $this->assertInstanceOf('Canducci\Cep\CepInfo', $cepInfo);
+
 
     }
 
@@ -62,6 +74,42 @@ class CepTest extends TestCase {
         $cep = $this->getCepInstance();
 
         $this->assertInternalType('array',$cep->find('01414000')->toArray()->result());
+
+    }
+
+    public function testCepInfoReturnObject()
+    {
+
+        $cep = $this->getCepInstance();
+
+        $this->assertInternalType('object',$cep->find('01414000')->toObject()->result());
+
+    }
+
+    public function testCepInfoTruePassed()
+    {
+        $cep = $this->getCepInstance();
+
+        $this->assertTrue($cep->find('01414000')->toObject()->passed());
+
+    }
+
+    public function testCepInfoFalsePassed()
+    {
+        $cep = $this->getCepInstance();
+
+        $this->assertFalse($cep->find('01414011')->toObject()->passed());
+
+    }
+
+    public function testCepParseException()
+    {
+
+        $this->setExpectedException('Exception');
+
+        Canducci\Cep\Cep::parse('');
+        Canducci\Cep\Cep::parse(1111111);
+        Canducci\Cep\Cep::parse('1111111');
 
     }
 
