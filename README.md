@@ -4,6 +4,10 @@ __Web Service provided by http://viacep.com.br/__
 
 [![Canducci Cep](http://i666.photobucket.com/albums/vv25/netdragoon/cep_zpsoqtae5hr.png)](https://packagist.org/packages/canducci/cep)
 
+### Demo
+
+[Demo Canducci ZipCode](http://zipcodedemo.herokuapp.com/)
+
 ## Quick start
 
 ### Required setup
