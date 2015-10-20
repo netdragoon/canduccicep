@@ -15,7 +15,7 @@ __Web Service provided by http://viacep.com.br/__
 In the `require` key of `composer.json` file add the following
 
 ```PHP
-"canducci/cep": "dev-master"
+"canducci/cep": "1.0.*"
 ```
 
 Run the Composer update comand
@@ -33,7 +33,7 @@ In your `config/app.php` add `'Canducci\Cep\CepServiceProvider'` to the end of t
 ),
 ```
 
-At the end of `config/app.php` add `'Cep' => 'Canducci\Cep\Facade\Cep'` to the `aliases` array
+At the end of `config/app.php` add `'Cep' => 'Canducci\Cep\Facades\Cep'` to the `aliases` array
 
 ```PHP
 'aliases' => array(
