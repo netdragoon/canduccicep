@@ -7,7 +7,7 @@ __Web Service provided by http://viacep.com.br/__
 [![Build Status](https://travis-ci.org/netdragoon/canduccicep.svg?branch=master)](https://travis-ci.org/netdragoon/cep)
 [![Packagist](https://img.shields.io/packagist/dt/canducci/cep.svg?style=flat)](https://packagist.org/packages/canducci/cep)
 [![Packagist](https://img.shields.io/packagist/l/canducci/cep.svg)](https://packagist.org/packages/canducci/cep)
-[![Packagist](https://img.shields.io/packagist/v/canducci/cep.svg)](https://packagist.org/packages/canducci/cep)
+[![Packagist](https://img.shields.io/packagist/v/canducci/cep.svg?label=version)](https://packagist.org/packages/canducci/cep)
 
 ### Demo
 
