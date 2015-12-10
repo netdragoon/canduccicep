@@ -87,18 +87,31 @@ To use is very simple, pass the ZIP and calls the various types of returns, like
 
 ```PHP
 $cep = Cep::find('01414-001');
+
+```
+
+####Application
+
+```PHP
+$cep = app('Cep')->find('01414-001');
+
 ```
 
 ####Injection (version 2.*)
+
 ```PHP
-Route::get("cep", function(Canducci\Cep\Contracts\ICep $cep)
+Route::get("cep", function(Canducci\Cep\Contracts\ICep $c)
 {    
-    
+    $cep = $c->find('01414-001');
 });
+
 ```
+
 ####Function (version 2.*)
+
 ```PHP 
 $cep = cep('01414-001');
+
 ```
 
 ###Type returns:
@@ -116,6 +129,7 @@ $cepInfo->result();
         "uf": "SP",
         "ibge": "3550308"
     }
+    
 ```
 
 ```PHP    
@@ -132,6 +146,7 @@ $cepInfo->result();
         [uf] => SP
         [ibge] => 3550308
     )
+    
 ```
 
 ```PHP    
@@ -148,6 +163,7 @@ $cepInfo->result();
         [uf] => SP
         [ibge] => 3550308
     )
+    
 ```
 
 ```PHP    
@@ -164,6 +180,7 @@ $cepInfo->result();
     	<uf>SP</uf>
     	<ibge>3550308</ibge>
     </xmlcep>
+    
 ```
 
 ```PHP    
@@ -180,6 +197,7 @@ $cepInfo->result();
         [uf] => SP
         [ibge] => 3550308
     )
+    
 ```
 
 ```PHP    
@@ -188,6 +206,7 @@ $cepInfo = $cep->toPiped();
 $cepInfo->result();
     
     cep:01414-001|logradouro:Rua Haddock Lobo|bairro:Cerqueira César|localidade:São Paulo|uf:SP|ibge:3550308
+    
 ```
     
 ```PHP    
@@ -197,6 +216,7 @@ $cepInfo->result();
     
     cep=01414-001&logradouro=Rua+Haddock+Lobo&bairro=Cerqueira+C%C3%A9sar
         &localidade=S%C3%A3o+Paulo&uf=SP&ibge=3550308
+        
 ```   
     
 __To check if any errors had to do:__
