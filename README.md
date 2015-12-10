@@ -27,24 +27,32 @@ Run the Composer update comand
 
     $ composer update
 
-In your `config/app.php` add `'Canducci\Cep\Providers\CepServiceProvider'` to the end of the `providers` array
+In your `config/app.php` add
+ 
+- version 1.* `'Canducci\Cep\CepServiceProvider'` or
+- version 2.* `'Canducci\Cep\Providers\CepServiceProvider'` to the end of the `providers` array
 
 ```PHP
 'providers' => array(
     ...,
     'Illuminate\Workbench\WorkbenchServiceProvider',
-    'Canducci\Cep\Providers\CepServiceProvider', 
+    'Canducci\Cep\CepServiceProvider', // version 1.* or
+    'Canducci\Cep\Providers\CepServiceProvider', // version 2.*
 
 ),
 ```
 
-At the end of `config/app.php` add `'Cep' => 'Canducci\Cep\Facades\Cep'` to the `aliases` array
+At the end of `config/app.php` add
+ 
+- version: 1.* `'Cep' => 'Canducci\Cep\Facade\Cep'` or
+- version: 2.* `'Cep' => 'Canducci\Cep\Facades\Cep'` to the `aliases` array
 
 ```PHP
 'aliases' => array(
     ...,
     'View'       => 'Illuminate\Support\Facades\View',
-    'Cep'        => 'Canducci\Cep\Facades\Cep',
+    'Cep'        => 'Canducci\Cep\Facade\Cep', // version 1.* or
+    'Cep'        => 'Canducci\Cep\Facades\Cep', // version 2.*
 
 ),
 ```
@@ -165,7 +173,8 @@ $cepInfo = $cep->toQuerty();
     
 $cepInfo->result();
     
-    cep=01414-001&logradouro=Rua+Haddock+Lobo&bairro=Cerqueira+C%C3%A9sar&localidade=S%C3%A3o+Paulo&uf=SP&ibge=3550308
+    cep=01414-001&logradouro=Rua+Haddock+Lobo&bairro=Cerqueira+C%C3%A9sar
+        &localidade=S%C3%A3o+Paulo&uf=SP&ibge=3550308
 ```   
     
 __To check if any errors had to do:__
