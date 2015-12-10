@@ -11,7 +11,7 @@ __Web Service provided by http://viacep.com.br/__
 
 ### Demo
 
-[Demo Canducci ZipCode](http://zipcodedemo.herokuapp.com/)
+[Demo Canducci CEP](http://zipcodedemo.herokuapp.com/)
 
 ## Quick start
 
@@ -90,7 +90,7 @@ $cep = Cep::find('01414-001');
 
 ```
 
-####Application
+####Application (version 1.* e 2.*)
 
 ```PHP
 $cep = app('Cep')->find('01414-001');
