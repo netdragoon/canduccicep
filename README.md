@@ -59,7 +59,7 @@ $cep = Cep::find('01414-001');
 
 Type returns:
 ```PHP    
-$cepInfo = $cep->toJon();
+$cepInfo = $cep->toJson();
 
 $cepInfo->result();
 

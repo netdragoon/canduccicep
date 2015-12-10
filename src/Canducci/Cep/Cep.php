@@ -209,8 +209,6 @@ class Cep {
         {
 
             $get = $this->cepClient->get($url);
-
-            $get = $this->loadData->get($url);
             
             return array($get, $this->validation($get));
 
