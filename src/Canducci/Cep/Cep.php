@@ -9,17 +9,30 @@ class Cep {
 
     private $URL =  'http://viacep.com.br/ws/[cep]/[type]/';
 
+<<<<<<< HEAD
     private $cepClient = null;
 
     /**
      * @param LoadData $cepClient
      */
     public function __construct(CepClient $cepClient)
+=======
+    private $loadData = null;
+
+    /**
+     * @param LoadData $loadData
+     */
+    public function __construct(LoadData $loadData)
+>>>>>>> 026b7ee5b7c3a6e751950ba8cd9d8bb11f09e666
     {
 
         $this->cep = '';
 
+<<<<<<< HEAD
         $this->cepClient = $cepClient;
+=======
+        $this->loadData = $loadData;
+>>>>>>> 026b7ee5b7c3a6e751950ba8cd9d8bb11f09e666
 
     }
 
@@ -208,7 +221,11 @@ class Cep {
         try 
         {
             
+<<<<<<< HEAD
             $get = $this->cepClient->get($url);
+=======
+            $get = $this->loadData->get($url); 
+>>>>>>> 026b7ee5b7c3a6e751950ba8cd9d8bb11f09e666
             
             return array($get, $this->validation($get));
 
