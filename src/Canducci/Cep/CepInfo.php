@@ -1,6 +1,8 @@
 <?php namespace Canducci\Cep;
 
-class CepInfo {
+use Canducci\Cep\Contracts\ICepInfo;
+
+class CepInfo implements ICepInfo {
 
 	private $result;
 	private $status;

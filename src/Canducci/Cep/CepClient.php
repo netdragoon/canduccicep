@@ -1,6 +1,8 @@
 <?php namespace Canducci\Cep;
 
-class CepClient {
+use Canducci\Cep\Contracts\ICepClient;
+
+class CepClient implements ICepClient {
 
     public function __construct()
     {

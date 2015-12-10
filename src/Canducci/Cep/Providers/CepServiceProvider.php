@@ -1,6 +1,8 @@
 <?php namespace Canducci\Cep\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Canducci\Cep\CepClient;
+use Canducci\Cep\Cep;
 
 class CepServiceProvider extends ServiceProvider {
 	
@@ -12,14 +14,14 @@ class CepServiceProvider extends ServiceProvider {
         $this->app->singleton('CepClient', function()
         {
 
-            return new Canducci\Cep\CepClient();
+            return new CepClient();
 
         });
 
         $this->app->bind('Cep', function($app)
         {
 
-            return new Canducci\Cep\Cep($app['CepClient']);
+            return new Cep($app['CepClient']);
 
         });
 

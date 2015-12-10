@@ -1,8 +1,9 @@
 <?php namespace Canducci\Cep;
 
+use Canducci\Cep\Contracts\ICep;
 use \Exception;
 
-class Cep {
+class Cep implements ICep {
 
 
     private $cep;
@@ -46,7 +47,8 @@ class Cep {
     public function setCep($cep)
     {
 
-        return $this->find($cep);
+        $this->find($cep);
+        return this;
 
     }
 
