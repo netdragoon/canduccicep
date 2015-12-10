@@ -19,40 +19,62 @@ __Web Service provided by http://viacep.com.br/__
 
 In the `require` key of `composer.json` file add the following
 
+___Version 1.*___
 ```PHP
-"canducci/cep": "1.0.*"
+"canducci/cep": "1.0.*" 
+
+```
+
+___Version 2.*___
+```PHP
+"canducci/cep": "2.0.*"
+
 ```
 
 Run the Composer update comand
 
     $ composer update
 
-In your `config/app.php` add
- 
-- `version 1.*`: `'Canducci\Cep\CepServiceProvider'` or
-- `version 2.*`: `'Canducci\Cep\Providers\CepServiceProvider'` to the end of the `providers` array
+In your `config/app.php` add `providers` array
 
+___Version 1.*___
 ```PHP
 'providers' => array(
     ...,
     'Illuminate\Workbench\WorkbenchServiceProvider',
-    'Canducci\Cep\CepServiceProvider', // version 1.* or
-    'Canducci\Cep\Providers\CepServiceProvider', // version 2.*
+    'Canducci\Cep\CepServiceProvider',    
+
+),
+```
+___Version 2.*___
+```PHP
+'providers' => array(
+    ...,
+    'Illuminate\Workbench\WorkbenchServiceProvider',    
+    'Canducci\Cep\Providers\CepServiceProvider'
 
 ),
 ```
 
-At the end of `config/app.php` add
- 
-- `version: 1.*`: `'Cep' => 'Canducci\Cep\Facade\Cep'` or
-- `version: 2.*`: `'Cep' => 'Canducci\Cep\Facades\Cep'` to the `aliases` array
+At the end of `config/app.php` add o `aliases` (Facade) in array
+
+___Version 1.*___
 
 ```PHP
 'aliases' => array(
     ...,
     'View'       => 'Illuminate\Support\Facades\View',
-    'Cep'        => 'Canducci\Cep\Facade\Cep', // version 1.* or
-    'Cep'        => 'Canducci\Cep\Facades\Cep', // version 2.*
+    'Cep'        => 'Canducci\Cep\Facade\Cep',
+),
+```
+
+___Version 2.*___
+
+```PHP
+'aliases' => array(
+    ...,
+    'View'       => 'Illuminate\Support\Facades\View',    
+    'Cep'        => 'Canducci\Cep\Facades\Cep',
 
 ),
 ```
@@ -61,21 +83,21 @@ At the end of `config/app.php` add
 
 To use is very simple, pass the ZIP and calls the various types of returns, like this:
 
-####Facade
+####Facade (version 1.* e 2.*)
 
 ```PHP
 $cep = Cep::find('01414-001');
 ```
 
-####Injection
+####Injection (version 2.*)
 ```PHP
 Route::get("cep", function(Canducci\Cep\Contracts\ICep $cep)
 {    
     
 });
 ```
-####Function
-```PHP
+####Function (version 2.*)
+```PHP 
 $cep = cep('01414-001');
 ```
 
@@ -198,6 +220,5 @@ else
     return 'Cep não encontrado';
 
 }
-
 
 ```
