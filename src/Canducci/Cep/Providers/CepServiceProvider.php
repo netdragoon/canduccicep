@@ -18,10 +18,24 @@ class CepServiceProvider extends ServiceProvider {
 
         });
 
-        $this->app->bind('Cep', function($app)
+        $this->app->singleton('Canducci\Cep\Contracts\ICepClient', function($app)
+        {
+
+            return $app['CepClient'];
+
+        });
+
+        $this->app->singleton('Cep', function($app)
         {
 
             return new Cep($app['CepClient']);
+
+        });
+
+        $this->app->singleton('Canducci\Cep\Contracts\ICep', function($app)
+        {
+
+            return $app['Cep'];
 
         });
 

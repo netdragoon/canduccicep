@@ -31,6 +31,7 @@ class CepInfo implements ICepInfo {
 	{
 
 		return !$this->status;
+
 	}
 
 	/**
