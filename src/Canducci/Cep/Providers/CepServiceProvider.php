@@ -5,17 +5,22 @@ use Illuminate\Support\ServiceProvider;
 class CepServiceProvider extends ServiceProvider {
 	
     protected $state = false;
+
     public function register()
     {
 
-        $this->app->singleton('LoadData', function()
+        $this->app->singleton('CepClient', function()
         {
-            return new LoadData();
+
+            return new Canducci\Cep\CepClient();
+
         });
 
         $this->app->bind('Cep', function($app)
         {
-            return new Cep($app['LoadData']);
+
+            return new Canducci\Cep\Cep($app['CepClient']);
+
         });
 
     }

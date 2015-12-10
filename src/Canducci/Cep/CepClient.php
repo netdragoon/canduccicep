@@ -1,6 +1,6 @@
 <?php namespace Canducci\Cep;
 
-class LoadData {
+class CepClient {
 
     public function __construct()
     {
