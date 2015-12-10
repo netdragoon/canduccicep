@@ -28,5 +28,5 @@
         "src/Canducci/Cep/CepHelper.php"
       ]
   },
-  "minimum-stability": "1.0.1"
+  "minimum-stability": "dev"
 }
