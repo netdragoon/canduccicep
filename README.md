@@ -29,8 +29,8 @@ Run the Composer update comand
 
 In your `config/app.php` add
  
-- version 1.* `'Canducci\Cep\CepServiceProvider'` or
-- version 2.* `'Canducci\Cep\Providers\CepServiceProvider'` to the end of the `providers` array
+- `version 1.*`: `'Canducci\Cep\CepServiceProvider'` or
+- `version 2.*`: `'Canducci\Cep\Providers\CepServiceProvider'` to the end of the `providers` array
 
 ```PHP
 'providers' => array(
@@ -44,8 +44,8 @@ In your `config/app.php` add
 
 At the end of `config/app.php` add
  
-- version: 1.* `'Cep' => 'Canducci\Cep\Facade\Cep'` or
-- version: 2.* `'Cep' => 'Canducci\Cep\Facades\Cep'` to the `aliases` array
+- `version: 1.*`: `'Cep' => 'Canducci\Cep\Facade\Cep'` or
+- `version: 2.*`: `'Cep' => 'Canducci\Cep\Facades\Cep'` to the `aliases` array
 
 ```PHP
 'aliases' => array(
