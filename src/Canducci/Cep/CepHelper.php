@@ -2,6 +2,11 @@
 
 if (!function_exists('cep'))
 {
+
+    /**
+     * @param $cep
+     * @return $this
+     */
     function cep($cep)
     {
 
@@ -10,4 +15,5 @@ if (!function_exists('cep'))
         return $canducciCep->find($cep);
 
     }
+
 }

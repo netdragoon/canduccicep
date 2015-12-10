@@ -5,12 +5,11 @@ use \Exception;
 
 class Cep implements ICep {
 
-
     private $cep;
 
     private $URL =  'http://viacep.com.br/ws/[cep]/[type]/';
 
-    private $loadData = null;
+    private $cepClient = null;
 
     /**
      * @param CepClient $cepClient
@@ -42,13 +41,14 @@ class Cep implements ICep {
 
     /**
      * @param $cep
-     * @return Cep
+     * @return $this
      */
     public function setCep($cep)
     {
 
         $this->find($cep);
-        return this;
+
+        return $this;
 
     }
 
@@ -220,9 +220,7 @@ class Cep implements ICep {
             
             throw new Exception("Erro no servidor http");
 
-        }  
-
-        return $get;
+        }
 
     }
 
