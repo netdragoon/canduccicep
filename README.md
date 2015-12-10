@@ -61,7 +61,7 @@ $cep = Cep::find('01414-001');
 
 ####Injection
 ```PHP
-Route::get("cep", function(Canducci\Cep\Contracts\ICep $Cep)
+Route::get("cep", function(Canducci\Cep\Contracts\ICep $cep)
 {    
     
 });
