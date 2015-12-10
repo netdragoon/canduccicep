@@ -6,13 +6,9 @@ class LoadData {
     {
 
     }
-
-    /**
-     * @param $url
-     * @return mixed
-     */
+    
     public function get($url)
-    {    	
+    {
 
         $ch = curl_init();
 
@@ -20,7 +16,7 @@ class LoadData {
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);        
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 
         curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
