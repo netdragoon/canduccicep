@@ -1,6 +1,5 @@
 <?php namespace Canducci\Cep;
 
-
 class CepInfo {
 
 	private $result;
@@ -11,7 +10,7 @@ class CepInfo {
 	 * @param $result
 	 * @param $status
 	 * @param $cep
-     */
+	 */
 	public function __construct($result, $status, $cep)
 	{
 
@@ -25,7 +24,7 @@ class CepInfo {
 
 	/**
 	 * @return bool
-     */
+	 */
 	public function passed()
 	{
 
@@ -34,7 +33,7 @@ class CepInfo {
 
 	/**
 	 * @return bool
-     */
+	 */
 	public function isError()
 	{
 
@@ -44,11 +43,12 @@ class CepInfo {
 
 	/**
 	 * @return mixed
-     */
+	 */
 	public function result()
 	{
 
 		return $this->result;
 
 	}
+
 }

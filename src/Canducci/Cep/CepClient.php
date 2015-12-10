@@ -6,7 +6,7 @@ class LoadData {
     {
 
     }
-    
+
     public function get($url)
     {
 
