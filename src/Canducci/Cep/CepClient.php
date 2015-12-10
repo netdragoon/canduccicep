@@ -2,10 +2,6 @@
 
 class LoadData {
 
-
-    /**
-     * Construct LoadData
-     */
     public function __construct()
     {
 
