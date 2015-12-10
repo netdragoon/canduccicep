@@ -27,24 +27,24 @@ Run the Composer update comand
 
     $ composer update
 
-In your `config/app.php` add `'Canducci\Cep\CepServiceProvider'` to the end of the `providers` array
+In your `config/app.php` add `'Canducci\Cep\Providers\CepServiceProvider'` to the end of the `providers` array
 
 ```PHP
 'providers' => array(
     ...,
     'Illuminate\Workbench\WorkbenchServiceProvider',
-    'Canducci\Cep\CepServiceProvider',
+    'Canducci\Cep\Providers\CepServiceProvider', 
 
 ),
 ```
 
-At the end of `config/app.php` add `'Cep' => 'Canducci\Cep\Facade\Cep'` to the `aliases` array
+At the end of `config/app.php` add `'Cep' => 'Canducci\Cep\Facades\Cep'` to the `aliases` array
 
 ```PHP
 'aliases' => array(
     ...,
     'View'       => 'Illuminate\Support\Facades\View',
-    'Cep'        => 'Canducci\Cep\Facade\Cep',
+    'Cep'        => 'Canducci\Cep\Facades\Cep',
 
 ),
 ```
@@ -53,11 +53,26 @@ At the end of `config/app.php` add `'Cep' => 'Canducci\Cep\Facade\Cep'` to the `
 
 To use is very simple, pass the ZIP and calls the various types of returns, like this:
 
+####Facade
+
 ```PHP
 $cep = Cep::find('01414-001');
 ```
 
-Type returns:
+####Injection
+```PHP
+Route::get("cep", function(Canducci\Cep\Contracts\ICep $Cep)
+{    
+    
+});
+```
+####Function
+```PHP
+$cep = cep('01414-001');
+```
+
+###Type returns:
+
 ```PHP    
 $cepInfo = $cep->toJson();
 
