@@ -6,7 +6,7 @@ use Exception;
 class Endereco implements IEndereco
 {
 
-    private $URL =  'viacep.com.br/ws/[UF]/[CIDADE]/[LOGRADOURO]/json/';
+    private $URL =  'http://viacep.com.br/ws/[UF]/[CIDADE]/[LOGRADOURO]/json/';
 
     private $cepClient;
 
@@ -22,7 +22,7 @@ class Endereco implements IEndereco
     {
 
         $this->cepClient = $cepClient;
-        
+
     }
 
 
