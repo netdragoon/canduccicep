@@ -1,6 +1,6 @@
 # CANDUCCI CEP
 
-__Web Service provided by http://viacep.com.br/__
+__Web Service http://viacep.com.br/__
 
 [![Canducci Cep](http://i666.photobucket.com/albums/vv25/netdragoon/cep_zpsoqtae5hr.png)](https://packagist.org/packages/canducci/cep)
 
@@ -13,31 +13,30 @@ __Web Service provided by http://viacep.com.br/__
 
 [Demo Canducci CEP](http://zipcodedemo.herokuapp.com/)
 
-## Quick start
+### Configurações
 
-### Required setup
+Na chave `require` do `composer.json` adicione a linhas abaixo conforme versão:
 
-In the `require` key of `composer.json` file add the following
+___Versão 1.*___
 
-___Version 1.*___
 ```PHP
 "canducci/cep": "1.0.*" 
 
 ```
 
-___Version 2.*___
+___Versão 2.*___
 ```PHP
 "canducci/cep": "2.0.*"
 
 ```
 
-Run the Composer update comand
+Na linha de comando execute:
 
     $ composer update
 
-In your `config/app.php` add `providers` array
+No `config/app.php` em `providers` adicione conforme versão:
 
-___Version 1.*___
+___Versão 1.*___
 ```PHP
 'providers' => array(
     ...,
@@ -46,7 +45,7 @@ ___Version 1.*___
 
 ),
 ```
-___Version 2.*___
+___Versão 2.*___
 ```PHP
 'providers' => array(
     ...,
@@ -56,9 +55,9 @@ ___Version 2.*___
 ),
 ```
 
-At the end of `config/app.php` add o `aliases` (Facade) in array
+No final do arquivo `config/app.php` adicione o `aliases` (Facade):
 
-___Version 1.*___
+___Versão 1.*___
 
 ```PHP
 'aliases' => array(
@@ -68,7 +67,7 @@ ___Version 1.*___
 ),
 ```
 
-___Version 2.*___
+___Versão 2.*___
 
 ```PHP
 'aliases' => array(
@@ -79,9 +78,9 @@ ___Version 2.*___
 ),
 ```
 
-##How to Use
+##Como usar?
 
-To use is very simple, pass the ZIP and calls the various types of returns, like this:
+Para usar é muito simples, passe o CEP e chamar os diversos tipos de saída:
 
 ####Facade (version 1.* e 2.*)
 
@@ -114,7 +113,7 @@ $cep = cep('01414-001');
 
 ```
 
-###Type returns:
+###Tipos retornados:
 
 ```PHP    
 $cepInfo = $cep->toJson();
@@ -219,7 +218,7 @@ $cepInfo->result();
         
 ```   
     
-__To check if any errors had to do:__
+__Para verificar se aconteceu erros faça:__
 
 ```PHP
 
