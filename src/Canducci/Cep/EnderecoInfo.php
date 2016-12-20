@@ -5,6 +5,7 @@ use Canducci\Cep\Contracts\IEnderecoInfo;
 class EnderecoInfo implements IEnderecoInfo
 {
     private $result;
+
     private $status;
 
     /**
@@ -20,13 +21,14 @@ class EnderecoInfo implements IEnderecoInfo
 
     }
 
-
     /**
      * @return mixed
      */
     public function passed()
     {
+
         return !$this->status;
+
     }
 
     /**
@@ -34,7 +36,9 @@ class EnderecoInfo implements IEnderecoInfo
      */
     public function isError()
     {
+
         return $this->status;
+
     }
 
     /**
@@ -42,6 +46,8 @@ class EnderecoInfo implements IEnderecoInfo
      */
     public function result()
     {
+
         return $this->result;
+
     }
 }
