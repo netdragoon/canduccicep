@@ -241,3 +241,57 @@ else
 }
 
 ```
+
+
+__Na versão 2.0.1 foi adiconado o recurso de busca por endereço:__
+
+##Como usar?
+
+Para usar a busca tem que passar a UF, Cidade e o Logradouro (sendo que Cidade e Logradoura no minimo 3 letras)
+
+####Facade
+
+```PHP
+$endereco = Endereco::find(UF::SAO_PAULO, 'São Paulo', 'Rua Fro');
+
+```
+
+####Application (version 1.* e 2.*)
+
+```PHP
+$endereco = app('Endereco')->find(UF::SAO_PAULO, 'São Paulo', 'Rua Fro');
+
+```
+
+####Injection (version 2.*)
+
+```PHP
+Route::get("cep", function(Canducci\Cep\Contracts\IEndereco $c)
+{
+    $endereco = $c->find(UF::SAO_PAULO, 'São Paulo', 'Rua Fro')
+});
+
+```
+
+####Function (version 2.*)
+
+```PHP
+$cep = endereco(UF::SAO_PAULO, 'São Paulo', 'Rua Fro');
+
+```
+
+###Tipos retornados de endereço são `JSON` e `ARRAY`:
+
+####Json:
+
+```
+$d = app('Endereco')->find(SAO_PAULO, 'São Paulo', 'Rua Fro');
+$d->toJson()->result();
+```
+
+####Array:
+
+```
+$d = app('Endereco')->find(SAO_PAULO, 'São Paulo', 'Rua Fro');
+$d->toArray()->result();
+```
