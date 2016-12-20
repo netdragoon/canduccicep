@@ -74,6 +74,7 @@ ___Versão 2.*___
     ...,
     'View'       => 'Illuminate\Support\Facades\View',    
     'Cep'        => 'Canducci\Cep\Facades\Cep',
+    'Endereco'   => 'Canducci\Cep\Facades\Endereco',
 
 ),
 ```
