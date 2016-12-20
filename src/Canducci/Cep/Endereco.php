@@ -11,7 +11,9 @@ class Endereco implements IEndereco
     private $cepClient;
 
     private $uf;
+
     private $cidade;
+    
     private $logradouro;
 
     /**
@@ -41,6 +43,8 @@ class Endereco implements IEndereco
         $this->cidade = $cidade;
 
         $this->logradouro = $logradouro;
+
+        return $this;
 
     }
 
@@ -108,11 +112,11 @@ class Endereco implements IEndereco
         try
         {
 
-            $get = $this->get_result($url);
+            $get = $this->cepClient->get($url);
 
             return $type === "json"
-                ? new EnderecoInfo($get, !is_null($get))
-                : new EnderecoInfo(json_decode($get, true), !is_null($get));
+                ? new EnderecoInfo($get, is_null($get))
+                : new EnderecoInfo(json_decode($get, true), is_null($get));
 
         }
         catch (Exception $ex)
