@@ -80,7 +80,7 @@ ___Versão 2.*___
 
 ##Como usar?
 
-Para usar é muito simples, passe o CEP e chamar os diversos tipos de saída:
+Para usar é muito simples, passe o CEP e chame os diversos tipos de saída:
 
 ####Facade (version 1.* e 2.*)
 
