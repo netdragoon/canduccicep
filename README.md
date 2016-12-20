@@ -248,7 +248,7 @@ __Na versão 2.0.1 foi adiconado o recurso de busca por endereço:__
 
 ##Como usar?
 
-Para usar a busca tem que passar a UF, Cidade e o Logradouro (sendo que Cidade e Logradoura no minimo 3 letras)
+Para usar a busca passe a **UF**, **Cidade** e o **Logradouro** (_sendo que Cidade e Logradoura no minimo 3 letras_)
 
 ####Facade
 
@@ -267,7 +267,7 @@ $endereco = app('Endereco')->find(UF::SAO_PAULO, 'São Paulo', 'Rua Fro');
 ####Injection (version 2.*)
 
 ```PHP
-Route::get("cep", function(Canducci\Cep\Contracts\IEndereco $c)
+Route::get("endereco", function(Canducci\Cep\Contracts\IEndereco $c)
 {
     $endereco = $c->find(UF::SAO_PAULO, 'São Paulo', 'Rua Fro')
 });
@@ -277,7 +277,7 @@ Route::get("cep", function(Canducci\Cep\Contracts\IEndereco $c)
 ####Function (version 2.*)
 
 ```PHP
-$cep = endereco(UF::SAO_PAULO, 'São Paulo', 'Rua Fro');
+$endereco = endereco(UF::SAO_PAULO, 'São Paulo', 'Rua Fro');
 
 ```
 
