@@ -11,6 +11,13 @@ class Cep implements ICep {
 
     private $cepClient = null;
 
+    private $expression = array (
+        'json' => '/"erro": true/',
+        'xml' => '/<erro>true<\/erro>/',
+        'piped' => '/erro:true/',
+        'querty' => '/erro=true/'
+    );
+
     /**
      * @param CepClient $cepClient
      */
@@ -177,11 +184,9 @@ class Cep implements ICep {
      * @param $get
      * @return bool
      */
-    private function validation($get)
+    private function validation($get, $type)
     {
-
-        return !((int)preg_match('/(erro)/', $get) === 1);
-
+        return !((int)preg_match($this->expression[$type], $get) === 1);
     }
 
     /**
@@ -211,8 +216,8 @@ class Cep implements ICep {
         {
 
             $get = $this->cepClient->get($url);
-            
-            return array($get, $this->validation($get));
+
+            return array($get, $this->validation($get,$type));
 
         } 
         catch (Exception $ex) 
