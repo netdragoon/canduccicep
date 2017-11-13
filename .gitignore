@@ -16,6 +16,11 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+.idea/
+.idea/vcs.xml
+.idea/**
+*.idea/
+*.idea/*.xml
 
 # =========================
 # Operating System Files
