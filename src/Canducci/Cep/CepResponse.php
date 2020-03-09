@@ -30,7 +30,7 @@ class CepResponse {
     /**
      * @return CepModel
      */
-    public function get(): CepModel {
+    public function get(): ?CepModel {
         return $this->cepModel;
     }
 }

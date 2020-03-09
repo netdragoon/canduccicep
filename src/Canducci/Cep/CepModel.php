@@ -92,5 +92,4 @@ class CepModel {
         return $this->gia;
     }
 
-
 }
