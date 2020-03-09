@@ -40,5 +40,11 @@ class CepUpTest extends TestCase
     {
         $this->assertNull($this->cepResponseError->get());
     }
+
+    public function testCepHelpIsOk(): void
+    {
+        $response = cep('01010000');
+        $this->assertTrue($response->isOk());
+    }
 }
 
