@@ -19,7 +19,8 @@
             "Canducci\\Cep\\": "src/Canducci/Cep/"
         },
         "files": [
-            "src/Canducci/Cep/CepHelper.php"
+            "src/Canducci/Cep/Helpers/CepHelper.php",
+            "src/Canducci/Cep/Helpers/UfHelper.php"
         ]
     },
     "minimum-stability": "dev"
