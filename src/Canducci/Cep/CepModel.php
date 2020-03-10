@@ -1,5 +1,9 @@
 <?php namespace Canducci\Cep;
 
+/**
+ * Class CepModel
+ * @package Canducci\Cep
+ */
 class CepModel {
 
     protected $cep;

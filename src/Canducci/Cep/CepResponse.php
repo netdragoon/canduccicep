@@ -1,5 +1,9 @@
 <?php namespace Canducci\Cep;
 
+/**
+ * Class CepResponse
+ * @package Canducci\Cep
+ */
 class CepResponse {
   
     protected $ok = false;
@@ -23,14 +27,14 @@ class CepResponse {
     /**
      * @return bool
      */
-    public function isOk() {
+    public function isOk(): bool {
         return $this->ok;
     }
 
     /**
      * @return CepModel
      */
-    public function get(): ?CepModel {
+    public function getCepModel(): ?CepModel {
         return $this->cepModel;
     }
 }

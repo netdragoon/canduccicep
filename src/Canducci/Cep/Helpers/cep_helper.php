@@ -1,9 +1,16 @@
 <?php
     if (!function_exists('cep'))
     {
-        function cep($cep): \Canducci\Cep\CepResponse
+        /**
+         * @param $value
+         * @return \Canducci\Cep\CepResponse
+         */
+        function cep(string $value): \Canducci\Cep\CepResponse
         {
-            $canducciCep = new Canducci\Cep\Cep(new Canducci\Cep\CepRequest());
-            return $canducciCep->find($cep);
+            /** @var $cep */
+            $cep = function_exists('app')
+                ? app('cep')
+                : new Canducci\Cep\Cep(new Canducci\Cep\CepRequest());
+            return $cep->find($value);
         }
     }

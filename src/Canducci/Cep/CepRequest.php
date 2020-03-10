@@ -1,5 +1,9 @@
 <?php namespace Canducci\Cep;
 
+/**
+ * Class CepRequest
+ * @package Canducci\Cep
+ */
 class CepRequest {
 
     /**

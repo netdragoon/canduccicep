@@ -10,15 +10,21 @@ use PHPUnit\Framework\TestCase;
 class CepUpTest extends TestCase
 {
     protected $cep;
+
     protected $cepRequest;
     protected $cepResponseOk;
     protected $cepResponseError;
+
+    protected $responseReponseHelperOk;
+
     public function setUp(): void
     {
         $this->cepRequest = new CepRequest();
         $this->cep = new Cep($this->cepRequest);
         $this->cepResponseOk = $this->cep->find('01010000');
         $this->cepResponseError = $this->cep->find('');
+
+        $this->responseReponseHelperOk = cep('01010000');
     }
 
     public function testCepResponseIsOk(): void
@@ -28,7 +34,7 @@ class CepUpTest extends TestCase
 
     public function testCepResponseInstanceOfCepModel(): void
     {
-        $this->assertInstanceOf(CepModel::class, $this->cepResponseOk->get());
+        $this->assertInstanceOf(CepModel::class, $this->cepResponseOk->getCepModel());
     }
 
     public function testCepResponseIsError(): void
@@ -38,13 +44,17 @@ class CepUpTest extends TestCase
 
     public function testCepResponseCepModelNull(): void
     {
-        $this->assertNull($this->cepResponseError->get());
+        $this->assertNull($this->cepResponseError->getCepModel());
     }
 
-    public function testCepHelpIsOk(): void
+    public function testCepHelperIsOk(): void
     {
-        $response = cep('01010000');
-        $this->assertTrue($response->isOk());
+        $this->assertTrue($this->responseReponseHelperOk->isOk());
+    }
+
+    public function testCepHelperInstanceOfCepModel(): void
+    {
+        $this->assertInstanceOf(CepModel::class, $this->responseReponseHelperOk->getCepModel());
     }
 }
 
