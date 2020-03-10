@@ -10,7 +10,7 @@
             /** @var $cep */
             $cep = function_exists('app')
                 ? app('cep')
-                : new Canducci\Cep\Cep(new Canducci\Cep\CepRequest());
+                : new Canducci\Cep\Cep(new Canducci\Cep\Request());
             return $cep->find($value);
         }
     }

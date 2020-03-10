@@ -7,17 +7,17 @@
 class Cep
 {
     /**
-     * @var CepRequest
+     * @var Request
      */
-    private $cepRequest;
+    private $request;
 
     /**
      * Cep constructor.
-     * @param CepRequest $cepRequest
+     * @param Request $request
      */
-    public function __construct(CepRequest $cepRequest)
+    public function __construct(Request $request)
     {
-        $this->cepRequest = $cepRequest;
+        $this->request = $request;
     }
 
     /**
@@ -25,15 +25,41 @@ class Cep
      * @return CepResponse
      * @throws \Exception
      */
-    public function find($value): CepResponse {
-        return $this->cepRequest->get($this->url($value));
+    public function find(string $value): CepResponse
+    {
+        $data = $this->request->get($this->url($value));
+        return $this->formatted($data['body'], $data['httpCode']);
     }
 
     /**
-     * @param $value
+     * @param string $value
      * @return string
      */
-    protected function url($value): string {
+    protected function url(string $value): string
+    {
         return "https://viacep.com.br/ws/{$value}/json/";
+    }
+
+    /**
+     * @param string $body
+     * @param int $httpCode
+     * @return CepResponse
+     * @throws \Exception
+     */
+    protected function formatted(string $body, int $httpCode): CepResponse
+    {
+        $rows = json_decode($body, true);
+        $cepModel = null;
+        $ok = false;
+        if ($httpCode === 200) {
+            if (empty($rows['erro'])) {
+                $ok = true;
+                $cepModel = new CepModel();
+                foreach ($rows as $key => $value) {
+                    $cepModel->$key = $value;
+                }
+            }
+        }
+        return new CepResponse($ok, $cepModel);
     }
 }

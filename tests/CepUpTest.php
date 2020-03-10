@@ -4,14 +4,14 @@ namespace PHPUnit\SelfTest\Basic;
 
 use Canducci\Cep\Cep;
 use Canducci\Cep\CepModel;
-use Canducci\Cep\CepRequest;
+use Canducci\Cep\Request;
 use PHPUnit\Framework\TestCase;
 
 class CepUpTest extends TestCase
 {
     protected $cep;
 
-    protected $cepRequest;
+    protected $request;
     protected $cepResponseOk;
     protected $cepResponseError;
 
@@ -19,8 +19,8 @@ class CepUpTest extends TestCase
 
     public function setUp(): void
     {
-        $this->cepRequest = new CepRequest();
-        $this->cep = new Cep($this->cepRequest);
+        $this->request = new Request();
+        $this->cep = new Cep($this->request);
         $this->cepResponseOk = $this->cep->find('01010000');
         $this->cepResponseError = $this->cep->find('');
 
