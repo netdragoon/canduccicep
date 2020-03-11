@@ -29,7 +29,6 @@ Se você utiliza o `Framework` [Laravel](https://www.laravel.com) segue logo aba
         ...
         Canducci\Cep\Providers\CepServiceProvider::class
     ]
-    ``` 
 
 
 4. Dentro do mesmo arquivo (`app.php`) configure os apelidos (`Facades`) como exemplo:
@@ -40,13 +39,12 @@ Se você utiliza o `Framework` [Laravel](https://www.laravel.com) segue logo aba
         'Cep' => Canducci\Cep\Facades\Cep::class,
         'Endereco' => Canducci\Cep\Facades\Endereco::class
     ]
-    ``` 
 
 ***Observação:*** *o item 4 é opcional*.
 
 5. Como utilizar?
 
-````php
+```php
 Route::get('/cep', function(\Canducci\Cep\Cep $cep){
     $cepResponse = $cep->find('19200000');
     $data = $cepResponse->getCepModel();        
