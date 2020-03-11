@@ -27,14 +27,16 @@ class EnderecoResponse
     /**
      * @return bool
      */
-    public function isOk(): bool {
+    public function isOk(): bool
+    {
         return $this->ok;
     }
 
     /**
      * @return array|null
      */
-    public function getCepModels(): ?array {
+    public function getCepModels(): ?array
+    {
         return $this->cepModels;
     }
 }

@@ -1,5 +1,7 @@
 <?php namespace Canducci\Cep;
 
+use Exception;
+
 /**
  * Class Endereco
  * @package Canducci\Cep
@@ -7,15 +9,15 @@
 class Endereco
 {
     /**
-     * @var Request
+     * @var CepRequest|Request
      */
     private $request;
 
     /**
      * Endereco constructor.
-     * @param Request $request
+     * @param CepRequest $request
      */
-    public function __construct(Request $request)
+    public function __construct(CepRequest $request)
     {
         $this->request = $request;
     }
@@ -29,8 +31,23 @@ class Endereco
      */
     public function find(string $uf, string $cidade, string $logradouro)
     {
-        $data = $this->request->get($this->url($uf, $cidade, $logradouro));
-        return $this->formatted($data['body'], $data['httpCode']);
+        if ($this->valid($uf, $cidade, $logradouro))
+        {
+            $data = $this->request->get($this->url($uf, $cidade, $logradouro));
+            return $this->formatted($data['body'], $data['httpCode']);
+        }
+        throw new Exception("Informações necessárias\rUnidade Federativa 2 letras\rCidade 3 letras no  minimo\rLogradouro 3 letras no minimo");
+    }
+
+    /**
+     * @param string $uf
+     * @param string $cidade
+     * @param string $logradouro
+     * @return bool
+     */
+    protected function valid(string $uf, string $cidade, string $logradouro): bool
+    {
+        return (mb_strlen($uf) === 2 && mb_strlen($cidade) >= 3 && mb_strlen($logradouro) >= 3);
     }
 
     /**

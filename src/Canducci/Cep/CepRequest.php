@@ -1,10 +1,10 @@
 <?php namespace Canducci\Cep;
 
 /**
- * Class Request
+ * Class CepRequest
  * @package Canducci\Cep
  */
-class Request {
+class CepRequest {
 
     /**
      * @param $url

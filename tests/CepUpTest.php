@@ -4,7 +4,7 @@ namespace PHPUnit\SelfTest\Basic;
 
 use Canducci\Cep\Cep;
 use Canducci\Cep\CepModel;
-use Canducci\Cep\Request;
+use Canducci\Cep\CepRequest;
 use PHPUnit\Framework\TestCase;
 
 class CepUpTest extends TestCase
@@ -13,17 +13,13 @@ class CepUpTest extends TestCase
 
     protected $request;
     protected $cepResponseOk;
-    protected $cepResponseError;
-
     protected $responseReponseHelperOk;
 
     public function setUp(): void
     {
-        $this->request = new Request();
+        $this->request = new CepRequest();
         $this->cep = new Cep($this->request);
         $this->cepResponseOk = $this->cep->find('01010000');
-        $this->cepResponseError = $this->cep->find('');
-
         $this->responseReponseHelperOk = cep('01010000');
     }
 
@@ -37,16 +33,6 @@ class CepUpTest extends TestCase
         $this->assertInstanceOf(CepModel::class, $this->cepResponseOk->getCepModel());
     }
 
-    public function testCepResponseIsError(): void
-    {
-        $this->assertFalse($this->cepResponseError->isOk());
-    }
-
-    public function testCepResponseCepModelNull(): void
-    {
-        $this->assertNull($this->cepResponseError->getCepModel());
-    }
-
     public function testCepHelperIsOk(): void
     {
         $this->assertTrue($this->responseReponseHelperOk->isOk());
@@ -55,6 +41,12 @@ class CepUpTest extends TestCase
     public function testCepHelperInstanceOfCepModel(): void
     {
         $this->assertInstanceOf(CepModel::class, $this->responseReponseHelperOk->getCepModel());
+    }
+
+    public function testCepResponseIsError(): void
+    {
+        $this->expectException(\Exception::class);
+        $this->cep->find('');
     }
 }
 
