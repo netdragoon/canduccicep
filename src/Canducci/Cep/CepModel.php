@@ -1,10 +1,12 @@
 <?php namespace Canducci\Cep;
 
+use JsonSerializable;
+
 /**
  * Class CepModel
  * @package Canducci\Cep
  */
-class CepModel
+class CepModel implements JsonSerializable
 {
     protected $cep;
     protected $logradouro;
@@ -16,11 +18,29 @@ class CepModel
     protected $ibge;
     protected $gia;
 
-    public function __set($atributo, $value){
+    /**
+     * @return array|mixed
+     */
+    public function jsonSerialize()
+    {
+        return get_object_vars($this);
+    }
+
+    /**
+     * @param $atributo
+     * @param $value
+     */
+    public function __set($atributo, $value)
+    {
         $this->$atributo = $value;
     }
 
-    public function __get($atributo){
+    /**
+     * @param $atributo
+     * @return mixed
+     */
+    public function __get($atributo)
+    {
         return $this->$atributo;
     }
 
@@ -95,4 +115,5 @@ class CepModel
     {
         return $this->gia;
     }
+
 }
