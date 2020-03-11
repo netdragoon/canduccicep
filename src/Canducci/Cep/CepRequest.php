@@ -4,8 +4,8 @@
  * Class CepRequest
  * @package Canducci\Cep
  */
-class CepRequest {
-
+class CepRequest
+{
     /**
      * @param $url
      * @return array

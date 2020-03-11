@@ -4,8 +4,8 @@
  * Class CepModel
  * @package Canducci\Cep
  */
-class CepModel {
-
+class CepModel
+{
     protected $cep;
     protected $logradouro;
     protected $complemento;
@@ -95,5 +95,4 @@ class CepModel {
     {
         return $this->gia;
     }
-
 }

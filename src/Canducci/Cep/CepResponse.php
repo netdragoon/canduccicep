@@ -4,8 +4,8 @@
  * Class CepResponse
  * @package Canducci\Cep
  */
-class CepResponse {
-  
+class CepResponse
+{
     protected $ok = false;
     protected $cepModel = null;
 
@@ -27,14 +27,16 @@ class CepResponse {
     /**
      * @return bool
      */
-    public function isOk(): bool {
+    public function isOk(): bool
+    {
         return $this->ok;
     }
 
     /**
      * @return CepModel
      */
-    public function getCepModel(): ?CepModel {
+    public function getCepModel(): ?CepModel
+    {
         return $this->cepModel;
     }
 }
