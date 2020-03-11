@@ -24,5 +24,8 @@
             "src/Canducci/Cep/Helpers/uf_helper.php"
         ]
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "scripts": {
+        "test": "phpunit tests/"
+    }
 }
