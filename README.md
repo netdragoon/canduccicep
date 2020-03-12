@@ -15,7 +15,6 @@ CEP do Brazil - Web Service [https://www.viacep.com.br](viacep.com.br)
 composer require canducci/cep
 ```
 
-
 ## Configuração
 
 ###### 1) Laravel
@@ -121,3 +120,21 @@ Se você utiliza o `Framework` [Laravel](https://www.laravel.com) segue logo aba
     - Logradouro com no minimo 3 letras
      
      se não uma exceção será lançada.
+
+###### 2) Qualquer código que usa o composer.phar:
+
+```
+λ php composer.phar require canducci/cep
+```
+
+logo após isso, inclua no seu código o `autoload.php` que está dentro da pasta `vendor`, exemplo:
+
+```php
+<?php
+
+  require_once 'vendor/autoload.php';
+  
+  $cepResponse = cep('01010000');
+  $data = $cepResponse->getCepModel();
+  echo json_encode($data);
+```
