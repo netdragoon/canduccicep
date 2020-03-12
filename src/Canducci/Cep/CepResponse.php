@@ -18,7 +18,7 @@ class CepResponse
     public function __construct(bool $ok, CepModel $cepModel = null)
     {
         if (!is_bool($ok)) {
-            throw new \Exception("Variable ok not null");
+            throw new \Exception("Variavel não é do tipo true/false");
         }
         $this->ok = $ok;
         $this->cepModel = $cepModel;

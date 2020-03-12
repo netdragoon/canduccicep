@@ -10,8 +10,8 @@
         {
             /** @var $cep */
             $cep = function_exists('app')
-                ? app('cep')
-                : new Canducci\Cep\Cep(new Canducci\Cep\CepRequest());
+                ? app('Cep')
+                : new \Canducci\Cep\Cep(new \Canducci\Cep\CepRequest());
             return $cep->find($value);
         }
     }
@@ -28,8 +28,8 @@
         {
             /** @var $endereco */
             $endereco = function_exists('app')
-                ? app('endereco')
-                : new Canducci\Cep\Endereco(new Canducci\Cep\CepRequest());
+                ? app('Endereco')
+                : new \Canducci\Cep\Endereco(new \Canducci\Cep\CepRequest());
             return $endereco->find($uf, $cidade, $logradouro);
         }
     }

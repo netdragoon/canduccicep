@@ -36,7 +36,7 @@ class Endereco
             $data = $this->request->get($this->url($uf, $cidade, $logradouro));
             return $this->formatted($data['body'], $data['httpCode']);
         }
-        throw new Exception("Informações necessárias\rUnidade Federativa 2 letras\rCidade 3 letras no  minimo\rLogradouro 3 letras no minimo");
+        throw new Exception("Informações necessárias: Unidade Federativa 2 letras, Cidade 3 letras no  minimo e Logradouro 3 letras no minimo");
     }
 
     /**

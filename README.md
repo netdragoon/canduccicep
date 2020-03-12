@@ -44,9 +44,11 @@ Se você utiliza o `Framework` [Laravel](https://www.laravel.com) segue logo aba
 
 5. Como utilizar?
 
+    5.1 Com Injeção de Dependencia:
+    
     ```php
     Route::get('/cep', function(\Canducci\Cep\Cep $cep){
-        $cepResponse = $cep->find('19200000');
+        $cepResponse = $cep->find('01010000');
         $data = $cepResponse->getCepModel();        
         return response()->json($data);
     });
@@ -56,3 +58,66 @@ Se você utiliza o `Framework` [Laravel](https://www.laravel.com) segue logo aba
         $data = $enderecoResponse->getCepModels();        
         return response()->json($data);
     });
+    ```
+  
+   5.2 Com Facade Laravel:
+ 
+    ```php
+    Route::get('/cep', function(){
+       $cepResponse = \Canducci\Cep\Facades\Cep::find('01010000');
+       $data = $cepResponse->getCepModel();        
+       return response()->json($data);
+    });
+ 
+    Route::get('/endereco', function(){
+       $enderecoResponse = \Canducci\Cep\Facades\Endereco::find('sp','são paulo', 'ave');
+       $data = $enderecoResponse->getCepModels();        
+       return response()->json($data);
+    });
+    ```
+    
+    5.3 Com `function` (função)
+    
+    ```php
+    Route::get('/cep', function(){
+       $cepResponse = cep('01010000');
+       $data = $cepResponse->getCepModel();
+       return response()->json($data);
+    });
+ 
+    Route::get('/endereco', function(){
+        $enderecoResponse = endereco('sp','são paulo','ave');
+        $data = $enderecoResponse->getCepModels();        
+        return response()->json($data);
+     });
+    ```
+    
+6. Resposta satisfatória:
+
+    6.1 - Utilize o método `isOk()` para verificar se realmente os dados foram recebidos:
+
+    ```php
+    $cepResponse = cep('01010000');
+    if ($cepResponse->isOk()) 
+    {
+        $data = $cepResponse->getCepModel();
+        return response()->json($data);
+    }
+    ```
+    
+    6.2 - Dados informados errados
+    
+    6.2.1 - No `Cep` o valor informado deve possuir um desses formatos:
+    
+     - 01010000, ou
+     - 01010-000
+         
+    para uma resposta satisfatória, se não um exceção será lançada.
+    
+    6.2.2 - No `Endereco` os valores informados segue essas regras
+    
+    - Uf com 2 letras 
+    - Cidade com no minimo 3 letras
+    - Logradouro com no minimo 3 letras
+     
+     se não uma exceção será lançada.
