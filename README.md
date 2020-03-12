@@ -7,6 +7,8 @@ CEP do Brazil - Web Service [https://www.viacep.com.br](viacep.com.br)
 [![License](https://img.shields.io/packagist/l/canducci/cep.svg)](https://packagist.org/packages/canducci/cep)
 [![Version](https://img.shields.io/packagist/v/canducci/cep.svg?label=version)](https://packagist.org/packages/canducci/cep)
 
+[Versão de configuração V2 - clique aqui](https://github.com/netdragoon/canduccicep/blob/master/READMEv2.md)
+
 ## Instalação do Pacote
 
 ```sh
@@ -32,28 +34,25 @@ Se você utiliza o `Framework` [Laravel](https://www.laravel.com) segue logo aba
 
 
 4. Dentro do mesmo arquivo (`app.php`) configure os apelidos (`Facades`) como exemplo:
- 
-    ````php
+    
+    ```php
     'aliases' => [
         ...
         'Cep' => Canducci\Cep\Facades\Cep::class,
         'Endereco' => Canducci\Cep\Facades\Endereco::class
-    ]
-
-***Observação:*** *o item 4 é opcional*.
+    ]  
 
 5. Como utilizar?
 
-```php
-Route::get('/cep', function(\Canducci\Cep\Cep $cep){
-    $cepResponse = $cep->find('19200000');
-    $data = $cepResponse->getCepModel();        
-    return response()->json($data);
-});
+    ```php
+    Route::get('/cep', function(\Canducci\Cep\Cep $cep){
+        $cepResponse = $cep->find('19200000');
+        $data = $cepResponse->getCepModel();        
+        return response()->json($data);
+    });
 
-Route::get('/endereco', function(\Canducci\Cep\Endereco $endereco){
-    $enderecoResponse = $endereco->find('sp','são paulo', 'ave');
-    $data = $enderecoResponse->getCepModels();        
-    return response()->json($data);
-});
-```
+    Route::get('/endereco', function(\Canducci\Cep\Endereco $endereco){
+        $enderecoResponse = $endereco->find('sp','são paulo', 'ave');
+        $data = $enderecoResponse->getCepModels();        
+        return response()->json($data);
+    });
