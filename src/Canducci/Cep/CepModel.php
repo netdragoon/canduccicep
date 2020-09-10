@@ -1,4 +1,6 @@
-<?php namespace Canducci\Cep;
+<?php
+
+namespace Canducci\Cep;
 
 use JsonSerializable;
 
@@ -14,7 +16,8 @@ class CepModel implements JsonSerializable
     protected $bairro;
     protected $localidade;
     protected $uf;
-    protected $unidade;
+    protected $ddd;
+    protected $siafi;
     protected $ibge;
     protected $gia;
 
@@ -95,9 +98,17 @@ class CepModel implements JsonSerializable
     /**
      * @return string
      */
-    public function getUnidade(): string
+    public function getDdd(): string
     {
-        return $this->unidade;
+        return $this->ddd;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSiafi(): string
+    {
+        return $this->siafi;
     }
 
     /**
@@ -115,5 +126,4 @@ class CepModel implements JsonSerializable
     {
         return $this->gia;
     }
-
 }

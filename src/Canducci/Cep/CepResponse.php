@@ -1,4 +1,6 @@
-<?php namespace Canducci\Cep;
+<?php
+
+namespace Canducci\Cep;
 
 /**
  * Class CepResponse

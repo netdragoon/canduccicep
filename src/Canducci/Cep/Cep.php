@@ -1,4 +1,6 @@
-<?php namespace Canducci\Cep;
+<?php
+
+namespace Canducci\Cep;
 
 use Exception;
 
@@ -29,8 +31,7 @@ class Cep
      */
     public function find(string $value): CepResponse
     {
-        if ($this->valid($value))
-        {
+        if ($this->valid($value)) {
             $data = $this->request->get($this->url($value));
             return $this->formatted($data['body'], $data['httpCode']);
         }
@@ -43,12 +44,10 @@ class Cep
      */
     protected function valid(string $value): bool
     {
-        if (mb_strlen($value) === 8 && preg_match('/^[0-9]{8}$/', $value))
-        {
+        if (mb_strlen($value) === 8 && preg_match('/^[0-9]{8}$/', $value)) {
             return true;
         }
-        if (mb_strlen($value) === 9 && preg_match('/^[0-9]{5}-[0-9]{3}$/', $value))
-        {
+        if (mb_strlen($value) === 9 && preg_match('/^[0-9]{5}-[0-9]{3}$/', $value)) {
             return true;
         }
         return false;

@@ -1,4 +1,6 @@
-<?php namespace Canducci\Cep;
+<?php
+
+namespace Canducci\Cep;
 
 use Exception;
 
@@ -31,8 +33,7 @@ class Endereco
      */
     public function find(string $uf, string $cidade, string $logradouro)
     {
-        if ($this->valid($uf, $cidade, $logradouro))
-        {
+        if ($this->valid($uf, $cidade, $logradouro)) {
             $data = $this->request->get($this->url($uf, $cidade, $logradouro));
             return $this->formatted($data['body'], $data['httpCode']);
         }
@@ -75,11 +76,9 @@ class Endereco
         if ($httpCode === 200) {
             if (empty($rows['erro'])) {
                 $ok = true;
-                foreach ($rows as $row)
-                {
+                foreach ($rows as $row) {
                     $cepModel = new CepModel();
-                    foreach ($row as $key => $value)
-                    {
+                    foreach ($row as $key => $value) {
                         $cepModel->$key = $value;
                     }
                     $cepModels[] = $cepModel;

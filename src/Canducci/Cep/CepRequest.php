@@ -1,4 +1,6 @@
-<?php namespace Canducci\Cep;
+<?php
+
+namespace Canducci\Cep;
 
 /**
  * Class CepRequest
@@ -23,7 +25,7 @@ class CepRequest
             $info = curl_getinfo($ch);
             curl_close($ch);
             return ['body' => $body, 'httpCode' => $info['http_code']];
-        } catch (\Exception $e){
+        } catch (\Exception $e) {
             throw $e;
         }
     }
