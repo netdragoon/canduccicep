@@ -117,9 +117,12 @@ Se você utiliza o `Framework` [Laravel](https://www.laravel.com) segue logo aba
     $model->getLocalidade() ou $m odel->localidade
     $model->getUf() ou $model->uf
     $model->getDdd() ou $model->ddd
-    $model->getSiafi() ou $model->sia fi
-    $model->getIbge() ou $model->ib   ge
+    $model->getSiafi() ou $model->siafi
+    $model->getIbge() ou $model->ibge
     $model->getGia() ou $model->gia
+    $model->getUnidade() ou $model->unidade
+    $model->getEstado() ou $model->estado
+    $model->getRegiao() ou $model->regiao
    ```
 
    6.2 - Dados informados errados
