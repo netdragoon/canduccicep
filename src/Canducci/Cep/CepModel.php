@@ -13,18 +13,21 @@ class CepModel implements JsonSerializable
     protected $cep;
     protected $logradouro;
     protected $complemento;
+    protected $unidade; //
     protected $bairro;
     protected $localidade;
     protected $uf;
-    protected $ddd;
-    protected $siafi;
+    protected $estado; //
+    protected $regiao; //
     protected $ibge;
     protected $gia;
+    protected $ddd;
+    protected $siafi;
 
     /**
      * @return array|mixed
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): mixed
     {
         return get_object_vars($this);
     }
@@ -45,6 +48,30 @@ class CepModel implements JsonSerializable
     public function __get($atributo)
     {
         return $this->$atributo;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUnidade() : string 
+    {
+        return $this->unidade;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEstado() : string 
+    {
+        return $this->estado;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRegiao() : string 
+    {
+        return $this->regiao;
     }
 
     /**
