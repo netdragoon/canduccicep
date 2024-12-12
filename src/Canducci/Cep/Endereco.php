@@ -34,7 +34,7 @@ class Endereco
     public function find(string $uf, string $cidade, string $logradouro)
     {
         if ($this->valid($uf, $cidade, $logradouro)) {
-            $data = $this->request->get($this->url($uf, $cidade, $logradouro));
+            $data = $this->request->get($this->url($uf, $cidade, $logradouro));            
             return $this->formatted($data['body'], $data['httpCode']);
         }
         throw new Exception("Informações necessárias: Unidade Federativa 2 letras, Cidade 3 letras no  minimo e Logradouro 3 letras no minimo");
@@ -58,8 +58,8 @@ class Endereco
      * @return string
      */
     protected function url(string $uf, string $cidade, string $logradouro): string
-    {
-        return "http://viacep.com.br/ws/{$uf}/{$cidade}/{$logradouro}/json/";
+    {        
+        return "https://viacep.com.br/ws/{$uf}/{$cidade}/{$logradouro}/json/";
     }
 
     /**

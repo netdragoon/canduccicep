@@ -18,7 +18,7 @@ class EnderecoUpTest extends TestCase
     {
         $this->request = new CepRequest();
         $this->endereco = new Endereco($this->request);
-        $this->enderecoResponseOk = $this->endereco->find(SAO_PAULO, 'sao paulo', 'ave');
+        $this->enderecoResponseOk = $this->endereco->find(SAO_PAULO, 'paulo', 'ave');
     }
 
     public function testEnderecoResponseIsOk(): void
