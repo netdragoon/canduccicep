@@ -1,4 +1,4 @@
-name: PHP Composer
+name: CanducciCEP
 
 on: 
   workflow_dispatch:
